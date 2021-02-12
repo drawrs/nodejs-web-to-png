@@ -14,7 +14,12 @@ app.get('/', function(request, response) {
 
   var decoded = new Buffer.from("" + encodedUrl, 'base64').toString('ascii');
   console.log(decoded);
-  response.send('Hello World! ' + decoded)
+  // response.send('Hello World! ' + decoded)
+  var currentPath = process.cwd();
+  console.log(currentPath);
+  var filepath = currentPath + '/example.png'
+  response.sendFile(filepath);
+
 })
 
 app.listen(app.get('port'), function() {
