@@ -39,11 +39,11 @@ app.get('/', function(request, response) {
     });
 
     await page.goto(decoded);
-    await page.screenshot({ path: 'example2.png' });
+    await page.screenshot({ path: 'example2.jpeg', type: 'jpeg', quality: 60 });
     await browser.close();
     console.log("im here got it");
 
-    var filepath = currentPath + '/example2.png'
+    var filepath = currentPath + '/example2.jpeg'
     response.sendFile(filepath);
 
   })();
