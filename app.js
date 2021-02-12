@@ -41,7 +41,7 @@ app.get('/', function(request, response) {
     await page.goto(decoded);
     await page.screenshot({ path: 'example2.png' });
     await browser.close();
-    console.log("im here");
+    console.log("im here got it");
 
     var filepath = currentPath + '/example2.png'
     response.sendFile(filepath);
