@@ -20,12 +20,17 @@ app.get('/', function(request, response) {
   console.log(currentPath);
   
   (async () => {
-    const browser = await puppeteer.launch({
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-      ],
-    });
+    const chromeOptions = {
+        headless: true,
+        defaultViewport: null,
+        args: [
+            "--incognito",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote"
+        ],
+    };
+    const browser = await puppeteer.launch(chromeOptions);
     const page = await browser.newPage();
     await page.setViewport({
       width: 1500,
