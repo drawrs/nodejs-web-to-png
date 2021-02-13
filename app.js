@@ -12,12 +12,9 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', function(request, response) {
   var q = url.parse(request.url, true).query;
   var encodedUrl = q.encodedUrl;
-  var customBg = q.customBg;
-  var customBgColor = q.customBgColor;
 
-  var decodedUrl = new Buffer.from("" + encodedUrl, 'base64').toString('ascii');
-  var posterUrl = decodedUrl + "&customBg=" + customBg + "&customBgColor=" + customBgColor;
-  console.log("INI: " + posterUrl);
+  var decoded = new Buffer.from("" + encodedUrl, 'base64').toString('ascii');
+  console.log(decoded);
 
   var currentPath = process.cwd();
   console.log(currentPath);
@@ -41,7 +38,7 @@ app.get('/', function(request, response) {
       deviceScaleFactor: 1,
     });
 
-    await page.goto(posterUrl);
+    await page.goto(decoded);
     await page.screenshot({ path: 'example2.jpeg', type: 'jpeg', quality: 60 });
     await browser.close();
     console.log("im here got it");
