@@ -24,10 +24,7 @@ app.get('/', function(request, response) {
         headless: true,
         defaultViewport: null,
         args: [
-            "--incognito",
-            "--no-sandbox",
-            "--single-process",
-            "--no-zygote"
+            "--no-sandbox
         ],
     };
     const browser = await puppeteer.launch(chromeOptions);
