@@ -26,6 +26,7 @@ app.get('/', function(request, response) {
         args: [
             "--no-sandbox"
         ],
+        
     };
     const browser = await puppeteer.launch(chromeOptions);
     const page = await browser.newPage();
@@ -35,7 +36,7 @@ app.get('/', function(request, response) {
       deviceScaleFactor: 1,
     });
 
-    await page.goto(decoded, { waitUntil: 'networkidle0' });
+    await page.goto(decoded, { waitUntil: 'domcontentloaded' });
     await page.screenshot({ path: 'example2.jpeg', type: 'jpeg', quality: 60 });
     await browser.close();
     console.log("im here got it");
